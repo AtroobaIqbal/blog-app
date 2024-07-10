@@ -2,7 +2,9 @@ const mongoose = require("mongoose")
 
 async function dbconnect() {
     // database connection
-    mongoose.connect("mongodb+srv://atroobaiqbal28:1NnQHGgd6ky55anr@cluster0.hpb1ezb.mongodb.net/blogapp")
-    // mongoose.connect("mongodb://localhost:27017")
-}
+    mongoose
+    .connect(process.env.MONGO_URI)
+    .then(() => console.log("Database Connected"))
+    .catch((err) => console.log(err))
+    }
 module.exports = dbconnect
